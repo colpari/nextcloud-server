@@ -29,15 +29,15 @@
         var $wrapper = $(this),
 
             // Buttons
-            $btnAddServer   = $wrapper.find("#ocFederationAddServerButton"),
-            $btnSubmit      = $wrapper.find("#ocFederationSubmit"),
+            $btnAddServer   	= $wrapper.find("#ocFederationAddServerButton"),
+            $btnSubmit      	= $wrapper.find("#ocFederationSubmit"),
 
             // Inputs
-            $inpServerUrl   = $wrapper.find("#serverUrl"),
+            $inpServerUrl   	= $wrapper.find("#serverUrl"),
 
             // misc
-            $msgBox         = $wrapper.find("#ocFederationAddServer .msg"),
-            $srvList        = $wrapper.find("#listOfTrustedServers");
+            $msgBox         	= $wrapper.find("#ocFederationAddServer .msg"),
+            $srvList        	= $wrapper.find("#listOfTrustedServers");
 
 
         /* Interaction
@@ -57,6 +57,15 @@
 
             removeServer( id );
         });
+
+		// trigger auto-accept
+		$srvList.on('change', 'li > .auto-accept', function() {
+			var checked = $(this).is(':checked');
+			var $this = $(this).parent();
+			var id = $this.attr('id');
+
+			autoAccept( id, checked);
+		});
 
         $btnSubmit.on("click", function()
         {
@@ -121,6 +130,20 @@
             }
         });
     }
+
+	function autoAccept( id, checked ) {
+		$.post(
+			OC.generateUrl('/apps/federation/trusted-servers/' + id),
+			{
+				autoAccept: checked
+			}
+		).done(function (data) {
+			OC.msg.finishedSuccess('#ocFederationAddServer .msg', data.message);
+		})
+		.fail(function (jqXHR) {
+			OC.msg.finishedError('#ocFederationAddServer .msg', JSON.parse(jqXHR.responseText).message);
+		});
+	}
 
 
 })( jQuery );

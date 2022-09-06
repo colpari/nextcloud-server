@@ -23,6 +23,7 @@
  */
 namespace OCA\Federation\Controller;
 
+use Exception;
 use OCA\Federation\TrustedServers;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
@@ -63,13 +64,40 @@ class SettingsController extends Controller {
 	}
 
 	/**
-	 * Add server to the list of trusted Nextclouds.
+	 * Remove server from the list of trusted Nextclouds.
 	 *
 	 * @AuthorizedAdminSetting(settings=OCA\Federation\Settings\Admin)
 	 */
 	public function removeServer(int $id): DataResponse {
 		$this->trustedServers->removeServer($id);
 		return new DataResponse();
+	}
+
+	/**
+	 * Update a property of a trusted Nextcloud.
+	 *
+	 * @AuthorizedAdminSetting(settings=OCA\Federation\Settings\Admin)
+	 * @throws Exception
+	 */
+	public function updateServer(int $id, string $autoAccept): DataResponse {
+		$serverUrl = $this->trustedServers->updateServer(
+			$id,
+			$autoAccept === 'true'
+		);
+		if ($autoAccept === 'true') {
+			$message = $this->l->t(
+				'Shares from %1$s will now be accepted automatically.',
+				[$serverUrl]
+			);
+		} else {
+			$message = $this->l->t(
+				'Shares from %1$s will NOT be accepted automatically.',
+				[$serverUrl]
+			);
+		}
+		return new DataResponse([
+			'message' => $message,
+		]);
 	}
 
 	/**

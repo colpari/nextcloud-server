@@ -9,6 +9,7 @@ style('federation', 'settings-admin')
 <div id="ocFederationSettings" class="section">
 	<h2><?php p($l->t('Trusted servers')); ?></h2>
 	<p class="settings-hint"><?php p($l->t('Federation allows you to connect with other trusted servers to exchange the user directory. For example this will be used to auto-complete external users for federated sharing. It is not necessary to add a server as trusted server in order to create a federated share.')); ?></p>
+	<p class="settings-hint"><span class="icon icon-alert-outline"></span><?php p($l->t('Check the „auto-accept shares“ option only for servers which are part of your organization. Be sure not to introduce any security risks for your users.')); ?></p>
 
 	<ul id="listOfTrustedServers">
 		<?php foreach ($_['trustedServers'] as $trustedServer) { ?>
@@ -24,7 +25,24 @@ style('federation', 'settings-admin')
 				<?php } else {?>
 					<span class="status error"></span>
 				<?php } ?>
-				<?php p($trustedServer['url']); ?>
+				<span class="trusted-server-name">
+					<?php p($trustedServer['url']); ?>
+				</span>
+				<?php
+				$selected = ($trustedServer['auto_accept'] === 1) ? "checked" :
+					"";
+				?>
+				<input name="accept-check-<?php
+				echo $trustedServer['id']; ?>"
+					   id="trusted-server-accept-check-<?php
+					   echo $trustedServer['id']; ?>"
+					   class="checkbox auto-accept"
+					   type="checkbox" value="1" <?php
+				       echo $selected ?>>
+				<label for="trusted-server-accept-check-<?php echo
+					$trustedServer['id']; ?>">
+					<?php p('auto-accept shares'); ?>
+				</label>
 				<span class="icon icon-delete"></span>
 			</li>
 		<?php } ?>

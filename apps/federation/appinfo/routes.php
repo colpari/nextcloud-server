@@ -33,6 +33,11 @@ return [
 			'url' => '/trusted-servers/{id}',
 			'verb' => 'DELETE'
 		],
+		[
+			'name' => 'Settings#updateServer',
+			'url' => '/trusted-servers/{id}',
+			'verb' => 'POST'
+		]
 	],
 	'ocs' => [
 		// old endpoints, only used by Nextcloud and ownCloud

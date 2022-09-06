@@ -98,6 +98,24 @@ class DbHandler {
 	}
 
 	/**
+	 * Update a parameter of a server from the list of trusted servers.
+	 *
+	 * @param int $id server ID
+	 * @param bool $autoAccept accept shares automatically
+	 * @return void
+	 * @throws DBException
+	 */
+	public function updateServer(int $id, bool $autoAccept): void {
+		$query = $this->connection->getQueryBuilder();
+		$query->update($this->dbTable)
+			->set('auto_accept', $query->createParameter('autoAccept'))
+			->where($query->expr()->eq('id', $query->createParameter('id')))
+			->setParameter('id', $id)
+			->setParameter('autoAccept', $autoAccept ? 1 : 0);
+		$query->executeStatement();
+	}
+
+	/**
 	 * Get trusted server with given ID
 	 *
 	 * @return array{id: int, url: string, url_hash: string, token: ?string, shared_secret: ?string, status: int, sync_token: ?string}
@@ -123,12 +141,14 @@ class DbHandler {
 	/**
 	 * Get all trusted servers
 	 *
-	 * @return list<array{id: int, url: string, url_hash: string, shared_secret: ?string, status: int, sync_token: ?string}>
+	 * @return list<array{id: int, url: string, url_hash: string,
+	 *     shared_secret: ?string, status: int, sync_token: ?string,
+	 *     auto_accept: int}>
 	 * @throws DBException
 	 */
 	public function getAllServer(): array {
 		$query = $this->connection->getQueryBuilder();
-		$query->select(['url', 'url_hash', 'id', 'status', 'shared_secret', 'sync_token'])
+		$query->select(['url', 'url_hash', 'id', 'status', 'shared_secret', 'sync_token', 'auto_accept'])
 			->from($this->dbTable);
 		$statement = $query->executeQuery();
 		$result = $statement->fetchAll();

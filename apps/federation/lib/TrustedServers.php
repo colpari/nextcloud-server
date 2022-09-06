@@ -27,6 +27,7 @@
  */
 namespace OCA\Federation;
 
+use Exception;
 use OCA\Federation\BackgroundJob\RequestSharedSecret;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Utility\ITimeFactory;
@@ -126,8 +127,22 @@ class TrustedServers {
 	}
 
 	/**
+	 * Update a property of a trusted server.
+	 *
+	 * @return string server URL
+	 * @throws Exception
+	 */
+	public function updateServer(int $id, bool $autoAccept): string {
+		$server = $this->dbHandler->getServerById($id);
+		$this->dbHandler->updateServer($id, $autoAccept);
+		return $server['url'];
+	}
+
+	/**
 	 * Get all trusted servers
-	 * @return list<array{id: int, url: string, url_hash: string, shared_secret: string, status: int, sync_token: string}>
+	 * @return list<array{id: int, url: string, url_hash: string,
+	 *     shared_secret: string, status: int, sync_token: string,
+	 *     auto_accept: int}>
 	 */
 	public function getServers() {
 		return $this->dbHandler->getAllServer();

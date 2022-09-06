@@ -33,6 +33,7 @@ class ComposerStaticInitFederation
         'OCA\\Federation\\Listener\\SabrePluginAuthInitListener' => __DIR__ . '/..' . '/../lib/Listener/SabrePluginAuthInitListener.php',
         'OCA\\Federation\\Middleware\\AddServerMiddleware' => __DIR__ . '/..' . '/../lib/Middleware/AddServerMiddleware.php',
         'OCA\\Federation\\Migration\\Version1010Date20200630191302' => __DIR__ . '/..' . '/../lib/Migration/Version1010Date20200630191302.php',
+        'OCA\\Federation\\Migration\\Version1015Date20220906080940' => __DIR__ . '/..' . '/../lib/Migration/Version1015Date20220906080940.php',
         'OCA\\Federation\\Settings\\Admin' => __DIR__ . '/..' . '/../lib/Settings/Admin.php',
         'OCA\\Federation\\SyncFederationAddressBooks' => __DIR__ . '/..' . '/../lib/SyncFederationAddressBooks.php',
         'OCA\\Federation\\SyncJob' => __DIR__ . '/..' . '/../lib/SyncJob.php',
