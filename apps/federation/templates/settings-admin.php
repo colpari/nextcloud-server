@@ -1,11 +1,35 @@
 <?php
 /** @var array $_ */
 use OCA\Federation\TrustedServers;
+use OCP\Util;
 
 /** @var \OCP\IL10N $l */
 script('federation', 'settings-admin');
 style('federation', 'settings-admin')
 ?>
+
+<!-- TEMPLATE -->
+<div style="display: none;">
+	<div id="trusted-server-list-item">
+		<?php $trustedServerListItemTemplate = <<<"EOD"
+		<span class="status {status}"></span>
+		<span class="trusted-server-name">
+			{url}
+		</span>
+		<input name="accept-check-{id}"
+			   id="trusted-server-accept-check-{id}"
+			   class="checkbox auto-accept"
+			   type="checkbox" value="1" {checked}>
+		<label for="trusted-server-accept-check-{id}">
+			{autoAcceptLabel}
+		</label>
+		<span class="icon icon-delete"></span>
+		EOD;
+		echo str_replace('{autoAcceptLabel}', Util::sanitizeHTML($l->t('auto-accept shares')), $trustedServerListItemTemplate); ?>
+	</div>
+</div>
+<!-- TEMPLATE END -->
+
 <div id="ocFederationSettings" class="section">
 	<h2><?php p($l->t('Trusted servers')); ?></h2>
 	<p class="settings-hint"><?php p($l->t('Federation allows you to connect with other trusted servers to exchange the user directory. For example this will be used to auto-complete external users for federated sharing. It is not necessary to add a server as trusted server in order to create a federated share.')); ?></p>
@@ -14,36 +38,28 @@ style('federation', 'settings-admin')
 	<ul id="listOfTrustedServers">
 		<?php foreach ($_['trustedServers'] as $trustedServer) { ?>
 			<li id="<?php p($trustedServer['id']); ?>">
-				<?php if ((int)$trustedServer['status'] === TrustedServers::STATUS_OK) { ?>
-					<span class="status success"></span>
 				<?php
+				$status = 'error';
+				if ((int)$trustedServer['status'] === TrustedServers::STATUS_OK) {
+					$status = 'success';
 				} elseif (
 					(int)$trustedServer['status'] === TrustedServers::STATUS_PENDING ||
 					(int)$trustedServer['status'] === TrustedServers::STATUS_ACCESS_REVOKED
-				) { ?>
-					<span class="status indeterminate"></span>
-				<?php } else {?>
-					<span class="status error"></span>
-				<?php } ?>
-				<span class="trusted-server-name">
-					<?php p($trustedServer['url']); ?>
-				</span>
-				<?php
-				$selected = ($trustedServer['auto_accept'] === 1) ? "checked" :
+				) {
+					$status = 'indeterminate';
+				}
+				$checked = ($trustedServer['auto_accept'] === 1) ? "checked" :
 					"";
+				echo str_replace(['{status}', '{url}', '{id}', '{checked}', '{autoAcceptLabel}'],
+					[
+						$status,
+						Util::sanitizeHTML($trustedServer['url']),
+						$trustedServer['id'],
+						$checked,
+						Util::sanitizeHTML($l->t('auto-accept shares')),
+					],
+					$trustedServerListItemTemplate);
 				?>
-				<input name="accept-check-<?php
-				echo $trustedServer['id']; ?>"
-					   id="trusted-server-accept-check-<?php
-					   echo $trustedServer['id']; ?>"
-					   class="checkbox auto-accept"
-					   type="checkbox" value="1" <?php
-				       echo $selected ?>>
-				<label for="trusted-server-accept-check-<?php echo
-					$trustedServer['id']; ?>">
-					<?php p('auto-accept shares'); ?>
-				</label>
-				<span class="icon icon-delete"></span>
 			</li>
 		<?php } ?>
 	</ul>

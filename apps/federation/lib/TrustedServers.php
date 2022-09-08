@@ -229,4 +229,14 @@ class TrustedServers {
 
 		return 'https://' . $url;
 	}
+
+	/**
+	 * Checks if the “auto accept” flag is enabled for the given trusted server URL.
+	 * @param string $url trusted server URL
+	 * @return bool true if “auto accept” is enabled otherwise false
+	 * @throws DBException
+	 */
+	public function isAutoAcceptEnabled(string $url): bool {
+		return $this->dbHandler->isAutoAcceptEnabled($url);
+	}
 }

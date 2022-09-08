@@ -107,12 +107,15 @@
             }
         ).done(function (data) {
             $("#serverUrl").attr('value', '');
+			let template = $('#trusted-server-list-item').html();
+			let itemHtml = template.replaceAll('{status}', 'indeterminate')
+				.replaceAll('{url}', data.url)
+				.replaceAll('{id}', data.id)
+				.replaceAll('{checked}', '');
             $("#listOfTrustedServers").prepend(
                 $('<li>')
                     .attr('id', data.id)
-                    .html('<span class="status indeterminate"></span>' +
-                        data.url +
-                        '<span class="icon icon-delete"></span>')
+                    .html(itemHtml)
             );
             OC.msg.finishedSuccess('#ocFederationAddServer .msg', data.message);
         })

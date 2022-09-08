@@ -27,10 +27,13 @@ namespace OCA\Federation\AppInfo;
 use OCA\DAV\Events\SabrePluginAuthInitEvent;
 use OCA\Federation\Listener\SabrePluginAuthInitListener;
 use OCA\Federation\Middleware\AddServerMiddleware;
+use OCA\Federation\TrustedServers;
+use OCA\Files_Sharing\External\Manager;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
+use OCP\DB\Exception;
 
 class Application extends App implements IBootstrap {
 
@@ -48,5 +51,26 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function boot(IBootContext $context): void {
+		$context->injectFn([$this, 'autoAcceptShares']);
+	}
+
+	/**
+	 * Accept all shares from trusted servers, where the “auto accept” flag is set to true/1.
+	 *
+	 * @param Manager $filesSharingManager the file sharing manager provides open shares and allows to accept them
+	 * @param TrustedServers $trustedServers used to check if “auto accept” was enabled
+	 * @return void
+	 * @throws Exception
+	 */
+	public function autoAcceptShares(Manager $filesSharingManager, TrustedServers $trustedServers): void {
+		$openShares = $filesSharingManager->getOpenShares();
+		foreach ($openShares as $openShare) {
+			if (isset($openShare['remote']) and isset($openShare['id'])) {
+				$remoteAddress = $openShare['remote'];
+				if ($trustedServers->isAutoAcceptEnabled($remoteAddress)) {
+					$filesSharingManager->acceptShare($openShare['id']);
+				};
+			}
+		}
 	}
 }

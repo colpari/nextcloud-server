@@ -309,4 +309,27 @@ class DbHandler {
 		$statement->closeCursor();
 		return !empty($result);
 	}
+
+	/**
+	 * Checks if the “auto accept” flag is enabled for the given trusted server URL.
+	 * @param string $url trusted server URL
+	 * @return bool true if “auto accept” is enabled otherwise false
+	 * @throws DBException
+	 */
+	public function isAutoAcceptEnabled(string $url): bool {
+		$hash = $this->hash($url);
+		$query = $this->connection->getQueryBuilder();
+		$query->select('auto_accept')
+			->from($this->dbTable)
+			->where($query->expr()->eq('url_hash', $query->createParameter('url_hash')))
+			->setParameter('url_hash', $hash);
+
+		$statement = $query->executeQuery();
+		$result = $statement->fetch();
+		$statement->closeCursor();
+		if (is_null($result) or !isset($result['auto_accept'])) {
+			return false;
+		}
+		return boolval($result['auto_accept']);
+	}
 }
