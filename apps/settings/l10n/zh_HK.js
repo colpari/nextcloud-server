@@ -320,7 +320,6 @@ OC.L10N.register(
     "Enable Profile" : "啟用簡介",
     "Unable to update profile enabled state" : "無法更新個人資料啟用狀態",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "將會遵循您個人檔案中「能見度」與「範圍」較嚴格的設定。舉例來說，當「能見度」設定為「對所有人顯示」，而「範圍」設定為「私人」時。將使用「私人」的設定。",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "無法更新 {displayId} 的可見性",
     "Your role" : "你的角色",
     "Your Twitter handle" : "您的 Twitter 帳號",

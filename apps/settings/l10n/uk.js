@@ -317,7 +317,6 @@ OC.L10N.register(
     "Enable Profile" : "Увімкнути профіль",
     "Unable to update profile enabled state" : "Неможливо оновити стан профілю",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "Для вашого профілю можна встановити певні обмеження з показу інформації про вас. Наприклад, якщо встановлено значення \"Показувати всім\", а для певного значення \"Приватне\", значення \"Приватне\" буде мати вищий пріоритет.",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "Не вдалося оновити видимість {displayId}",
     "Your role" : "Ваша роль",
     "Your Twitter handle" : "Ваш дескриптор Twitter",

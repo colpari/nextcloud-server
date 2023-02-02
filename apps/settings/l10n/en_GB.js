@@ -320,7 +320,6 @@ OC.L10N.register(
     "Enable Profile" : "Enable Profile",
     "Unable to update profile enabled state" : "Unable to update profile enabled state",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected.",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "Unable to update visibility of {displayId}",
     "Your role" : "Your role",
     "Your Twitter handle" : "Your Twitter handle",

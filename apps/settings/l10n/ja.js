@@ -317,7 +317,6 @@ OC.L10N.register(
     "Enable Profile" : "プロフィールを有効化",
     "Unable to update profile enabled state" : "プロフィールを公開できません",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "プロフィール公開ページは、可視性またはスコープのより制限的な設定が優先されます。たとえば、可視性が「全員に表示」に設定され、スコープが「プライベート」に設定されている場合、「プライベート」が尊重されます。",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "{displayId}の表示範囲を更新できませんでした",
     "Your role" : "あなたの役",
     "Your Twitter handle" : "あなたのTwitterのID",

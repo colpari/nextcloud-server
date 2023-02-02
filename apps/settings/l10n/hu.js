@@ -320,7 +320,6 @@ OC.L10N.register(
     "Enable Profile" : "Profil engedélyezése",
     "Unable to update profile enabled state" : "A profil engedélyezési állapota nem frissíthető",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "A profiljában a láthatóság vagy hatókör közül a szigorúbb beállítás lesz figyelembe véve. Például ha a láthatóság „Mindenki számára látható” és a hatókör „Privát”, akkor a „Privát” lesz figyelembe véve.",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "A(z) {displayId} láthatósága nem frissíthető",
     "Your role" : "Az Ön szerepköre",
     "Your Twitter handle" : "A Twitter-azonosítója",

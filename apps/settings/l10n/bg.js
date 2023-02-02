@@ -320,7 +320,6 @@ OC.L10N.register(
     "Enable Profile" : "Активиране на профил",
     "Unable to update profile enabled state" : "Не може да се актуализира активирано състояние на профил",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "По-рестриктивна настройка за видимост или обхват се спазва във вашия профил. Например, ако видимостта е зададена на „Показване на всички“ и обхватът е настроен на „Частен“, „Частен“ се зачита.",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "Не може да се актуализира видимостта на {displayId}",
     "Your role" : "Вашата роля",
     "Your Twitter handle" : "Вашият Twitter манипулатор",

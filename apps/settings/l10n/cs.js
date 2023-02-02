@@ -320,7 +320,6 @@ OC.L10N.register(
     "Enable Profile" : "Zapnout profil",
     "Unable to update profile enabled state" : "Nedaří se aktualizovat stav zapnutí profilu",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "Ohledně vašeho profilu bude respektována to více omezující nastavení – například, pokud je viditelnost nastavená na „Zobrazit všem“ a rozsah je nastavený na „Soukromé“, je respektováno „Soukromé.",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "Nedaří se aktualizovat viditelnost {displayId}",
     "Your role" : "Vaše úloha",
     "Your Twitter handle" : "Twitter účet",

@@ -60,7 +60,7 @@ $getUserAvatar = static function (int $size) use ($_): string {
 			<div class="header-left">
 				<a href="<?php print_unescaped($_['logoUrl'] ?: link_to('', 'index.php')); ?>"
 					id="nextcloud">
-					<img class="logo logo-icon" alt="<?php p($l->t('%s logo', [$theme->getName()])); ?>" src="<?= ($_['logoUrl'] ?? '') !== '' ? $_['logoUrl'] : $theme->getLogo(); ?>">
+					<div class="logo logo-icon"></div>
 				</a>
 
 				<nav id="header-left__appmenu"></nav>
@@ -69,14 +69,7 @@ $getUserAvatar = static function (int $size) use ($_): string {
 			<div class="header-right">
 				<div id="unified-search"></div>
 				<div id="notifications"></div>
-				<div id="contactsmenu">
-					<div class="menutoggle" tabindex="0" role="button"
-					aria-haspopup="true" aria-controls="contactsmenu-menu" aria-expanded="false">
-						<span class="hidden-visually"><?php p($l->t('Contacts'));?></span>
-					</div>
-					<div id="contactsmenu-menu" class="menu"
-						aria-label="<?php p($l->t('Contacts menu'));?>"></div>
-				</div>
+				<div id="contactsmenu"></div>
 				<div id="settings">
 					<div id="expand" tabindex="0" role="button" class="menutoggle"
 						aria-label="<?php p($l->t('Open settings menu'));?>"

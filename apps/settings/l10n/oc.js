@@ -150,7 +150,6 @@ OC.L10N.register(
     "Your phone number" : "Vòstre numèro de telefòn",
     "Edit your Profile visibility" : "Modificatz la visibilitat de vòstre perfil",
     "Enable Profile" : "Activar Perfil",
-    "{displayId}" : "{displayId}",
     "Your role" : "Vòstre ròtle",
     "Add" : "Ajustar",
     "Add new password" : "Apondre senhal novèl",

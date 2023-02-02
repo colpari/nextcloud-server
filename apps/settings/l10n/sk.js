@@ -317,7 +317,6 @@ OC.L10N.register(
     "Enable Profile" : "Povoliť Profil",
     "Unable to update profile enabled state" : "Nie je možné aktualizovať stav aktivácie profilu",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "Vo vašom profile sa rešpektuje prísnejšie nastavenie viditeľnosti alebo rozsahu. Ak je napríklad viditeľnosť nastavená na „Zobraziť všetkým“ a rozsah je nastavený na „Súkromné“, „Súkromné“ bude rešpektované.",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "Nie je možné aktualizovať viditeľnosť {displayId}",
     "Your role" : "Vaša rola",
     "Your Twitter handle" : "Vaša stránka na Twitteri",

@@ -150,7 +150,7 @@
 .files-filestable tbody tr[data-permissions="16"] td.filename .nametext .innernametext {
   color: var(--color-text-maxcontrast);
 }
-.files-filestable tbody tr[data-e2eencrypted=true] {
+.files-filestable tbody tr[data-e2eencrypted=true] .selection {
   pointer-events: none;
 }
 
@@ -1286,7 +1286,7 @@ table.dragshadow td.size {
   margin: 0;
   padding: 22px;
   opacity: 0.5;
-  position: fixed;
+  float: right;
   right: calc(var(--default-grid-baseline) * 4);
   top: calc(var(--header-height) + var(--default-grid-baseline));
   z-index: 100;

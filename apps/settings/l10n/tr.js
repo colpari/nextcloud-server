@@ -320,7 +320,6 @@ OC.L10N.register(
     "Enable Profile" : "Profili etkinleştir",
     "Unable to update profile enabled state" : "Profilin etkinleştirilme durumu güncellenemedi",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "Profilinizde daha kısıtlayıcı olan görünürlük veya kapsam ayarına uyulur - Örneğin, görünürlük \"Herkese görüntülensin\" ve kapsam \"Özel\" olarak ayarlanmışsa, \"Özel\" seçimine uyulur.",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "{displayId} görünürlüğü güncellenemedi",
     "Your role" : "Pozisyonunuz",
     "Your Twitter handle" : "Twitter adresiniz",

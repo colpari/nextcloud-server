@@ -320,7 +320,6 @@ OC.L10N.register(
     "Enable Profile" : "Profil aktivieren",
     "Unable to update profile enabled state" : "Der Status für aktiviertes Profil konnte nicht aktualisiert werden",
     "The more restrictive setting of either visibility or scope is respected on your Profile. For example, if visibility is set to \"Show to everyone\" and scope is set to \"Private\", \"Private\" is respected." : "Die restriktivere Einstellung von Sichtbarkeit oder Bereich wird in Ihrem Profil berücksichtigt. Wenn beispielsweise die Sichtbarkeit auf \"Für alle anzeigen\" und der Bereich auf \"Privat\" festgelegt ist, wird \"Privat\" respektiert.",
-    "{displayId}" : "{displayId}",
     "Unable to update visibility of {displayId}" : "Sichtbarkeit von {displayId} kann nicht aktualisiert werden",
     "Your role" : "Ihre Funktion",
     "Your Twitter handle" : "Ihr Twitter-Handle",
